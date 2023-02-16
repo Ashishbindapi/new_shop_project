@@ -4,7 +4,7 @@
     $productcontroller = new ProductController(new ProductModel($connection));
     if(isset($_POST['name']))
     {
-        $productcontroller->addProduct($_POST,$_GET);
+        $productcontroller->addProduct($_POST);
         
     }
 
