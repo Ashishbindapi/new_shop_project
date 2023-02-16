@@ -7,7 +7,6 @@
         $productcontroller->addProduct($_POST);
         
     }
-
     $data = $productcontroller->getProduct();
 ?>
 <?php include('./thems/header.php');?>

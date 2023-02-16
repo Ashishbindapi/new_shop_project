@@ -19,8 +19,9 @@
 
       public function addProduct($data)
       {
-         $this->model->addProduct($data);
-         $this->saveFiles();
+         $productId = $this->model->addProduct($data);
+         $libId =  $this->saveFiles();
+         return $this->model->saveId($productId,$libId);
       }
 
       public function saveFiles(){
