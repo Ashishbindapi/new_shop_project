@@ -23,8 +23,9 @@
                     <option class="form-control" value="<?php echo $product['id'];?>"><?php echo $product['name']; ?></option>
                     <?php } ?>
                 </select><br>
+					<img class="img-fluid" src="" id="preview" width="250">
                 <input type="file" name="file" id="profile_pic">
-                <button type="submit" class="btn btn-primary mt-2 mb-2">Submit</button>
+                <button id="select_img" type="submit" class="btn btn-primary mt-2 mb-2">Submit</button>
             </form>
         </div>
     </div>    

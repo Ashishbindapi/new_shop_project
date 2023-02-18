@@ -5,5 +5,7 @@
   </div>
 </footer>
   <script src="./js_css/bundle.js"></script>
+  <script src="./js_css/j_query.js"></script>
+  <script src="./js/script.js"></script>
   </body>
 </html>

@@ -43,4 +43,19 @@
             $pdo = $this->conn->prepare($sql);
             $pdo->execute([$productId,$libId]);
         }
+        public function getFile($fileId){
+            $sql = "SELECT * FROM library WHERE lib_id = ?";
+            $pdo = $this->conn->prepare($sql);
+            $pdo->execute([$fileId]);
+            return $pdo->fetch(PDO::FETCH_ASSOC);
+        }
+        Public function getproduct_to_library()
+        {
+            $sql = "SELECT * FROM product_to_library
+            JOIN products ON product_to_library.product_id = products.id
+            JOIN library ON product_to_library.library_id = library.lib_id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO ::FETCH_ASSOC);
+        }
     }

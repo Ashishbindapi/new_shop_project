@@ -23,7 +23,34 @@
          $libId =  $this->saveFiles();
          return $this->model->saveId($productId,$libId);
       }
-
+      public function init($data)
+      {
+          switch ($data['name']) {
+              case 'uploadFile' :
+                  $this->saveFiles();
+                  break;
+              case 'downloadFile' :
+                  $this->downloadFile($data['fileId']);
+                  break;
+          }
+      }
+  
+      public function downloadFile($fileId)
+      {
+          $file = $this->model->getFile($fileId);
+          $name = $file['file_name'];
+          $mime = $file['mime_type'];
+          $filePath = __DIR__ . '/../../../' . $file['file_path'];
+          // Set headers for image file
+          header("Content-Type: " . $mime);
+          header("Content-Disposition: attachment; filename=" . $name);
+          ob_clean();
+          flush();
+          // Output image file to client
+          readfile($filePath);
+          exit;
+      }    
+  
       public function saveFiles(){
          $fileName = 'uploaded_pic/' . time() . '_' . $_FILES['file']['name'];
          if($this->storeFileToDisk($fileName, $_FILES['file']['tmp_name'])){
@@ -36,5 +63,8 @@
      {
          return move_uploaded_file($fileToMoov, $fileName);
      }
- 
+     public function getproduct_to_library()
+    {
+        return $this->model->getproduct_to_library();
+    }
     }
